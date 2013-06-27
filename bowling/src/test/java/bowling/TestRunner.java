@@ -1,8 +1,8 @@
-package se.waymark.rentit;
+package bowling;
 
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-public class RunCukesTest {
+public class TestRunner {
 }
