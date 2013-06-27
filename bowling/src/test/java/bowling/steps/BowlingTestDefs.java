@@ -1,6 +1,12 @@
 package bowling.steps;
 
+import java.util.List;
+
 import bowling.Game;
+
+import cucumber.api.DataTable;
+import cucumber.api.PendingException;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -10,18 +16,36 @@ import static org.junit.Assert.assertThat;
 
 public class BowlingTestDefs {
 
-    @Given("^there are (\\d+) cars available for rental$")
-    public void there_are_cars_available_for_rental(int availableCars) throws Throwable {
-    	
-    }
+	private Game game;
+	
+	@Before
+	public void beforeScenario() {
+		game = new Game();
+	}
+	
+	@Given("^a player start a new bowling game$")
+	public void a_player_start_a_new_bowling_game() throws Throwable {
 
-    @When("^I rent one$")
-    public void rent_one_car() throws Throwable {
+	}
 
-    }
+	@When("^he throws the following pins$")
+	public void he_throws_the_following(List<playerThrow> playerThrows) throws Throwable {
+	    // For automatic conversion, change DataTable to List<YourType>
+		for(playerThrow aThrow : playerThrows)
+		{
+			System.out.println(aThrow.pins);
+		}
 
-    @Then("^there will only be (\\d+) cars available for rental$")
-    public void there_will_be_less_cars_available_for_rental(int expectedAvailableCars) throws Throwable {
 
-    }
+	}
+
+	@Then("^his score should be (\\d+)$")
+	public void his_score_should_be(int arg1) throws Throwable {
+
+	}
+	
+	public class playerThrow {
+		Integer pins;
+	}
+	
 }
